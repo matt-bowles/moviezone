@@ -1,0 +1,109 @@
+<h1>Sign-up now and start booking your movies on-line!</h1>
+
+<p style="float: right;">* = Compulsory field</p>
+
+<!-- Sign-up form -->
+<!-- event.preventDefault() prevents the form from being submitted (hence refreshed), allowing for
+     AJAX to be used instead. It also allows for the HTML 'required' attribute to be used. -->
+<form id="createMemberForm" name="createMemberForm" onsubmit="event.preventDefault(); createMember();">
+    <fieldset>
+        <legend>Name</legend>
+        <div class="row">
+            <label>Surname:</label><input name="surname" type="text" required>
+            <div class="required">*</div>
+        </div>
+        <div class="row">
+            <label>Other names:</label><input name="other_name" type="text" required>
+            <div class="required">*</div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Preferred Contact Method</legend>
+        <div class="row">
+            <label>Mobile phone:</label><input type="radio" name="contact_method" value="mobile" onchange="change_contactMethod(this.value);">
+            <label>Landline phone:</label><input type="radio" name="contact_method" value="landline" onchange="change_contactMethod(this.value);">
+            <label>Email:</label><input type="radio" name="contact_method" value="email" checked onchange="change_contactMethod(this.value);">
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Contact details</legend>
+        <div name="contact_details">
+            <div class="row">
+                <label>Mobile:</label><input id="mobile" name="mobile" type="text" class="contact_inputs">
+                <div class="required" style="visibility: hidden" id="required_mobile">*</div>
+            </div>
+            <div class="row">
+                <label>Landline:</label><input id="landline" name="landline" type="text" class="contact_inputs">
+                <div class="required" style="visibility: hidden" id="required_landline">*</div>
+            </div>
+            <div class="row">
+                <label>Email:</label><input id="email" name="email" type="text" class="contact_inputs" required>
+                <div class="required" id="required_email">*</div>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Choose Your Occupation</legend>
+        <div class="row">
+            <label>Occupation:</label>
+            <select name="occupation" required>
+                <option disabled="" selected="" value="">Select...</option>
+                <option value="Student">Student</option>
+                <option value="Manager">Manager</option>
+                <option value="Medical">Medical worker</option>
+                <option value="Trades">Trades worker</option>
+                <option value="Education">Education</option>
+                <option value="Technician">Technician</option>
+                <option value="Clerical">Clerical worker</option>
+                <option value="Retail">Retail worker</option>
+                <option value="Researcher">Researcher</option>
+                <option value="Other">Other</option>
+            </select>
+            <div class="required">*</div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Address</legend>
+        <label>Do you want to receive our monthly magazine?</label>
+        <input id="magazine" name="magazine" type="checkbox" value="1" checked onchange="change_wantsMagazine()">
+        <div class="row">
+            <label>Street address:</label><input id="street" name="street" type="text" class="magazine_inputs" required>
+            <div class="required" id="required_street">*</div>
+        </div>
+        <div class="row">
+            <label>Suburb and State:</label><input id="suburb" name="suburb" type="text" class="magazine_inputs" required>
+            <div class="required" id="required_suburb">*</div>
+        </div>
+        <div class="row">
+            <label>Postcode:</label><input id="postcode" name="postcode" type="text" minlength="4" maxlength="4" size="4" class="magazine_inputs" required>
+            <div class="required" id="required_postcode">*</div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Username and Password</legend>
+        <div class="row">
+            <label>Username:</label>
+            <input id="username" name="username" type="text" onchange="checkIfExists(this.id, this.value, 'guest')" maxlength="10" required>
+            <div class="required">*</div>
+            <div id="username_available" class="errorBox" property="property"></div>
+        </div>
+        <div class="row">
+            <label>Password:</label><input id="password" name="password" type="password" minlength="4" maxlength="10" required>
+            <div class="required">*</div>
+        </div>
+        <div class="row">
+            <label>Verify password:</label><input id="verifyPassword" type="password" minlength="4" maxlength="10" required>
+            <div class="required">*</div>
+        </div>
+    </fieldset>
+</form>
+
+<div class="row">
+    <input type="submit" form="createMemberForm" value="Join the DVD Emporium Now">
+    <input type="reset" form="createMemberForm" value="Reset">
+</div>
